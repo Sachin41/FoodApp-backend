@@ -35,14 +35,31 @@ const orderSchema = new mongoose.Schema(
 
     orderItems: [
       {
-        foodId: String,
+        restaurantName: String,
+        restaurantId: String,
+        description: String,
+        menuItemId: String,
         name: String,
         price: Number,
         quantity: Number,
         image: String,
+        _id: String
       },
     ],
 
+    orderAddress: {
+      addressType: String,
+      city: String,
+      fullName: String,
+      houseNo: String,
+      isDefault: Boolean,
+      landmark: String,
+      phone: String,
+      pincode: String,
+      state: String,
+      street: String,
+      _id: String,
+    },
     paymentStatus: {
       type: String,
       enum: [

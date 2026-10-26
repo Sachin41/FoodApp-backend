@@ -8,12 +8,13 @@ exports.getAddresses = async (req, res) => {
         if (!addresses) {
             return res.status(404).json({
                 success: false,
-                message: "No address added for the user"
+                message: "No address added for the user, add an address"
             })
         }
 
         res.status(200).json({
             success: true,
+            message: "Addresses fetched successfully",
             addresses
         })
 

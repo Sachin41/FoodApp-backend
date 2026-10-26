@@ -7,11 +7,10 @@ exports.signup = async (req, res) => {
     const { name, email, password, phone } = req.body;
 
     const existingUser = await User.findOne({ email });
-
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "User already exists",
+        message: "An account with this email address already exists",
       });
     }
 
@@ -55,7 +54,7 @@ exports.login = async (req, res) => {
     ) {
       return res.status(401).json({
         success: false,
-        message: "Invalid credentials",
+        message: "Incorrect login details",
       });
     }
 

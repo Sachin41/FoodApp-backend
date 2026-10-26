@@ -23,7 +23,8 @@ exports.createPhonePeOrder = async (data) => {
             customerName: data.name,
             customerPhone: data.number,
             amount: data.amount,
-            orderItems: data.items || [],
+            orderItems: data.orderItems,
+            orderAddress: data.address,
             paymentStatus: "PENDING",
             orderStatus: "PENDING",
         });

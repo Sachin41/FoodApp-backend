@@ -13,6 +13,7 @@ const cartSchema = new mongoose.Schema(
     
     items: [
         {
+            restaurantName: String,
             restaurantId: String,
             menuItemId: String,
             name: String,
