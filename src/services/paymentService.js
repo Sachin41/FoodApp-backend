@@ -7,8 +7,9 @@ let merchant_id = process.env.MERCHANT_ID
 
 exports.createPhonePeOrder = async (data) => {
     console.log("Order Request:", data);
-    // http://localhost:8000
-    //   https://foodapp-backend-si51.onrender.com
+    // replace http://localhost:8000 with  https://foodapp-backend-si51.onrender.com
+
+    // replace http://localhost:5173/ with https://foodportdelivery.netlify.app
 
     const merchantTransactionId = data.transactionId;
     const existingOrder =
@@ -34,9 +35,9 @@ exports.createPhonePeOrder = async (data) => {
         merchantTransactionId: merchantTransactionId,
         name: data.name,
         amount: data.amount * 100,
-        redirectUrl: `http://localhost:8000/api/payment/status/?id=${merchantTransactionId}`,
+        redirectUrl: `https://foodapp-backend-si51.onrender.com/api/payment/status/?id=${merchantTransactionId}`,
         redirectMode: 'POST',
-        callbackUrl: `http://localhost:8000/api/payment/status/?id=${merchantTransactionId}`,
+        callbackUrl: `https://foodapp-backend-si51.onrender.com/api/payment/status/?id=${merchantTransactionId}`,
         mobileNumber: data.number,
         paymentInstrument: {
             type: 'PAY_PAGE'
@@ -117,11 +118,7 @@ exports.verifyPayment = async (req, res) => {
         // const orderId = "12345";
         console.log("orderIDs", orderId);
 
-
-
-        // const url = `http://localhost:5173/ordersummary?orderId=${orderId}`
-        //    https://foodportdelivery.netlify.app/ordersummary?orderId=${orderId}
-        const url = `http://localhost:5173/ordersummary?orderId=${orderId}`
+        const url = `https://foodportdelivery.netlify.app/ordersummary?orderId=${orderId}`
         return res.redirect(url)
     } else {
         await Order.findOneAndUpdate(
@@ -131,7 +128,7 @@ exports.verifyPayment = async (req, res) => {
                 orderStatus: "FAILED",
             }
         );
-        const url = `http://localhost:5173/failure`
+        const url = `https://foodportdelivery.netlify.app/failure`
         return res.redirect(url)
     }
 
